@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="hu" data-theme="dark">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Szkriptek és Automatizáció</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    
+    <!-- highlight.js betöltése a kódok színezéséhez (syntax highlighting) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/tokyo-night-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</head>
+<body>
+
+    <main class="container">
+        <!-- Vissza gomb a főoldalra -->
+        <nav>
+            <ul>
+                <li><a href="index.html" class="secondary">← Vissza a portfólióba</a></li>
+            </ul>
+        </nav>
+
+        <hgroup>
+            <h1>Szkriptek és Automatizáció</h1>
+            <p>Irodai szoftverekhez készített makrók és kódok (3. Gyakorlat)</p>
+        </hgroup>
+
+        <!-- Google Táblázatok Szkript Kártya -->
+        <article>
+            <header>
+                <h2>Pénzügyi adatok vizuális szűrése (Google Sheets)</h2>
+            </header>
+            <p><strong>Cél:</strong> Egy Google Táblázat adatainak gyors, vizuális feldolgozása. A szkript optimalizált módon (tömbök használatával) átvizsgálja a táblázat összes adatát, és a negatív értékeket tartalmazó cellákat automatikusan piros formázással látja el.</p>
+            <p><strong>Nyelv:</strong> Google Apps Script (JavaScript)</p>
+            
+            <!-- A kód megjelenítése -->
+            <pre><code class="language-javascript">function onOpen() {
+  SpreadsheetApp.getUi().createMenu('Táblázat Szkriptek')
+      .addItem('Negatív számok kiemelése', 'highlightNegatives')
+      .addToUi();
+}
+
+function highlightNegatives() {
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  var range = sheet.getDataRange();
+  
+  var values = range.getValues();
+  var bgColors = range.getBackgrounds();
+  var fontColors = range.getFontColors();
+  var count = 0;
+
+  for (var r = 0; r < values.length; r++) {
+    for (var c = 0; c < values[r].length; c++) {
+      if (typeof values[r][c] === 'number' && values[r][c] < 0) {
+        bgColors[r][c] = '#ffcccc';
+        fontColors[r][c] = '#cc0000';
+        count++;
+      }
+    }
+  }
+
+  range.setBackgrounds(bgColors);
+  range.setFontColors(fontColors);
+
+  SpreadsheetApp.getUi().alert('Kész! ' + count + ' negatív értéket emeltem ki.');
+}</code></pre>
+<hr>
+            <h3>Élő Táblázat</h3>
+            <p>Itt láthatod a táblázatot (olvasható módban):</p>
+            <iframe 
+                src="https://docs.google.com/spreadsheets/d/e/2PACX-1vS8s4MNdY3vp1tlRH2axC9yNZz3e_d3QiJtX9Ilumge38yntDAPcyCAB3JMPcIdt41Ki9zKGQ0Bht8m/pubhtml?widget=true&amp;headers=false" 
+                width="100%" 
+                height="400" 
+                style="border: none; border-radius: 5px; background-color: white;">
+            </iframe>
+
+            
+            <footer>
+                <em>Ha meg szeretnét tekinteni és módosítani a táblázatot: <a href="https://docs.google.com/spreadsheets/d/1-kjKNQPd4FCra0ggRinyY3ru5183oTJoJ9M1CMvRT-4/edit?usp=sharing">Táblázat</a></em></footer>
+        </article>
+
+    </main>
+
+</body>
+</html>

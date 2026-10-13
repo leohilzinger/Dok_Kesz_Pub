@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="hu" data-theme="dark">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Markdown és LaTeX Bemutató</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    <script>
+        <!-- Ez kell hogy a sima $ jelre működjön-->
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    };
+    </script>
+    
+    <!-- MathJax betöltése a LaTeX képletek kirajzolásához -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+
+    <main class="container">
+        <!-- Vissza gomb a főoldalra -->
+        <nav>
+            <ul>
+                <li><a href="/index.html" class="secondary">← Vissza a portfólióba</a></li>
+            </ul>
+        </nav>
+
+        <hgroup>
+            <h1>Markdown és LaTeX bemutató</h1>
+            <p>Példák a dokumentációkészítés eszközeire</p>
+        </hgroup>
+
+        <section>
+            <h2>Markdown példa</h2>
+            <p>A Markdown egy könnyen olvasható jelölőnyelv. Így néz ki a forráskódja, és a belőle generált eredmény:</p>
+            
+            <div class="grid">
+                <!-- Nyers kód bemutatása -->
+                <article>
+                    <header><strong>Nyers Markdown kód</strong></header>
+<pre><code># Főcím
+Ez egy **félkövér** és egy *dőlt* szöveg.
+
+- Első pont
+- Második pont
+
+[Kattints ide a Youtube-hoz](https://www.youtube.com/watch?v=dQw4w9WgXcQ)</code></pre>
+                </article>
+
+                <!-- Renderelt eredmény -->
+                <article>
+                    <header><strong>Böngészőben megjelenve</strong></header>
+                    <h2>Főcím</h2>
+                    <p>Ez egy <strong>félkövér</strong> és egy <em>dőlt</em> szöveg.</p>
+                    <ul>
+                        <li>Első pont</li>
+                        <li>Második pont</li>
+                    </ul>
+                    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Kattints ide a Youtube-hoz</a>
+                </article>
+            </div>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>LaTeX (TeX) képletek weben</h2>
+            <p>A GitHub Markdownban a képleteket <code>$$</code> jelek közé tesszük. Ezen a weboldalon a MathJax könyvtár segítségével rajzoljuk ki őket.</p>
+            
+            <article>
+                <header><strong>A Másodfokú egyenlet megoldóképlete</strong></header>
+                <p>Nyers TeX kód:</p>
+                <pre><code>$$x_{1,2}=\frac{-b\pm\sqrt{b^2-4ac}}{2a}$$</code></pre>
+                
+                <p>Ugyanez a weboldalon renderelve:</p>
+                <!-- A MathJax automatikusan felismeri és szép képletté alakítja -->
+                <p class="text-center" style="font-size: 1.5rem;">
+                    $$x_{1,2}=\frac{-b\pm\sqrt{b^2-4ac}}{2a}$$
+                </p>
+            </article>
+            <article>
+    <header><strong>A másodfokú egyenlet megoldóképletének levezetése</strong></header>
+    
+    <p>Induljunk ki az általános alakból, ahol $a \neq 0$:</p>
+    <p>$$ax^2 + bx + c = 0$$</p>
+    
+    <p>Vonjunk ki mindkét oldalból $c$-t:</p>
+    <p>$$ax^2 + bx = -c$$</p>
+    
+    <p>Osszuk el az egyenlet mindkét oldalát $a$-val:</p>
+    <p>$$x^2 + \frac{b}{a}x = -\frac{c}{a}$$</p>
+    
+    <p>Alakítsuk teljes négyzetté a bal oldalt. Ehhez adjuk hozzá mindkét oldalhoz az $x$ együtthatója felének négyzetét, azaz a $\left(\frac{b}{2a}\right)^2$ kifejezést:</p>
+    <p>$$x^2 + \frac{b}{a}x + \left(\frac{b}{2a}\right)^2 = \left(\frac{b}{2a}\right)^2 - \frac{c}{a}$$</p>
+    
+    <p>A bal oldal most már felírható egy kéttagú összeg négyzeteként:</p>
+    <p>$$\left(x + \frac{b}{2a}\right)^2 = \frac{b^2}{4a^2} - \frac{c}{a}$$</p>
+    
+    <p>Hozzuk közös nevezőre a jobb oldalt:</p>
+    <p>$$\left(x + \frac{b}{2a}\right)^2 = \frac{b^2 - 4ac}{4a^2}$$</p>
+    
+    <p>Vonjunk gyököt mindkét oldalból (figyelembe véve a pozitív és negatív gyököt is):</p>
+    <p>$$x + \frac{b}{2a} = \pm\frac{\sqrt{b^2 - 4ac}}{2a}$$</p>
+    
+    <p>Végül vonjunk ki $\frac{b}{2a}$-t mindkét oldalból, hogy megkapjuk a végeredményt:</p>
+    <p>$$x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$</p>
+</article>
+        </section>
+
+    </main>
+
+</body>
+</html>
