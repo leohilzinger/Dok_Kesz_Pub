@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="hu" data-theme="dark"> <!-- A data-theme lehet "light" is, ha világos oldalt szeretnél -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Portfólió - Dokumentumkészítés & publikálás</title>
+    
+    <!-- Pico CSS betöltése CDN-ről -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    
+    <!-- Egyedi stílus a kártyák rácsos elrendezéséhez -->
+    <style>
+        .project-grid {
+            display: grid;
+            /* Automatikusan annyi oszlopot csinál, amennyi kifér. Minimum 300px széles egy kártya. */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        /* Egy kis extra margó a kártyák fejlécének */
+        article header h3 {
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Felső Navigációs Sáv -->
+    <header class="container">
+        <nav>
+            <ul>
+                <li><strong><a href="#" class="contrast">Portfólió</a></strong></li>
+            </ul>
+            <ul>
+                <!-- <li><a href="#gyakorlatok">Gyakorlatok</a></li> -->
+                <li><a href="https://github.com/leohilzinger" target="_blank">GitHub profilom</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Fő tartalom -->
+    <main class="container">
+        
+        <!-- Bemutatkozás szekció -->
+        <section id="rolam">
+            <hgroup>
+                <h2>Üdvözöllek a portfóliómban!</h2>
+                <p>Dokumentumkészítés és -publikálás kurzus munkái</p>
+            </hgroup>
+            <p></p>
+             </section>
+
+        <hr>
+
+        <!-- Projektek / Gyakorlatok szekció -->
+        <section id="gyakorlatok">
+            <h2>Elvégzett feladatok</h2>
+            
+            <div class="project-grid">
+                
+                <!-- 1-2. Gyakorlat Kártya -->
+                <article>
+                    <header>
+                        <h3>1-2. Gyakorlat</h3>
+                    </header>
+                    <p><strong>Téma:</strong> Webfejlesztés alapok és GitHub</p>
+                    <ul>
+                        <li>HTML, CSS, JavaScript (Amőba játék)</li>
+                        <li>FussStack CRUD RestAPI (PHP/MySQL)</li>
+                        <li>GitHub Pages publikálás és Markdown</li>
+                    </ul>
+                    <footer>
+                        <!-- Ide kerülhet a link az adott projekt mappájára vagy repójára -->
+                        <a href="aknakaereso/index.html" role="button" class="outline">Aknakereső megnyitása</a>
+                    </footer>
+                </article>
+
+                <!-- 3. Gyakorlat Kártya -->
+                <article>
+                    <header>
+                        <h3>3. Gyakorlat</h3>
+                    </header>
+                    <p><strong>Téma:</strong> Szkriptek és automatizálás</p>
+                    <ul>
+                        <li>Excel Visual Basic (VBA) és Python kódok</li>
+                        <li>Google Docs - Google Script</li>
+                        <li>Apple Script alapok</li>
+                    </ul>
+                    <footer>
+                        <a href="szkriptek.html" role="button" class="outline">Kódok megtekintése</a>
+                    </footer>
+                </article>
+
+                <!-- ========================================== -->
+                <!-- ÚJ GYAKORLAT HOZZÁADÁSA (Másold ezt a részt) -->
+                <!-- ========================================== -->
+                <!-- 
+                <article>
+                    <header>
+                        <h3>4. Gyakorlat</h3>
+                    </header>
+                    <p><strong>Téma:</strong> NodeJS és SvelteKit</p>
+                    <ul>
+                        <li>NodeJS alapok, NPM</li>
+                        <li>Reaktív frontend fejlesztés</li>
+                    </ul>
+                    <footer>
+                        <a href="#" role="button" class="outline">Megnézem</a>
+                    </footer>
+                </article>
+                -->
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Lábléc -->
+    <footer class="container">
+        <hr>
+        <p><small>© 2026 [Ide írd a neved]. Készült a <a href="https://picocss.com/" target="_blank">Pico CSS</a> segítségével.</small></p>
+    </footer>
+
+</body>
+</html>

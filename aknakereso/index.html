@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Egyszerű Aknakereső</title>
+    <style>
+        /* Alapvető oldal stílus */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #2c3e50;
+            color: white;
+            margin-top: 50px;
+        }
+
+        /* A játéktábla rács (grid) beállítása */
+        #board {
+            display: grid;
+            grid-template-columns: repeat(10, 30px); /* 10 oszlop, 30px széles cellák */
+            grid-gap: 2px;
+            background-color: #7f8c8d;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        /* Egy cella stílusa */
+        .cell {
+            width: 30px;
+            height: 30px;
+            background-color: #bdc3c7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            cursor: pointer;
+            user-select: none;
+            border-radius: 3px;
+        }
+
+        /* Felfedett cella */
+        .cell.revealed {
+            background-color: #ecf0f1;
+            cursor: default;
+        }
+
+        /* Akna háttere */
+        .cell.mine {
+            background-color: #e74c3c;
+        }
+
+        /* Üzenet kiírása (Nyertél/Vesztettél) */
+        #message {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        /* Újraindító gomb */
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Aknakereső</h1>
+    <div id="board"></div>
+    <div id="message"></div>
+    <button onclick="initGame()">Új játék</button>
+
+    <script>
+        // Játék beállítások
+        const ROWS = 10;
+        const COLS = 10;
+        const MINES_COUNT = 10;
+        
+        let board = [];
+        let gameOver = false;
+        let revealedCount = 0;
+
+        const boardElement = document.getElementById('board');
+        const messageElement = document.getElementById('message');
+
+        // Játék inicializálása (első indítás vagy újrakezdés)
+        function initGame() {
+            boardElement.innerHTML = '';
+            messageElement.innerText = '';
+            board = [];
+            gameOver = false;
+            revealedCount = 0;
+
+            // Mátrix (táblázat) létrehozása a memóriában
+            for (let r = 0; r < ROWS; r++) {
+                let row = [];
+                for (let c = 0; c < COLS; c++) {
+                    row.push({
+                        mine: false,
+                        revealed: false,
+                        flagged: false,
+                        element: null
+                    });
+                }
+                board.push(row);
+            }
+
+            // Aknák véletlenszerű elhelyezése
+            let minesPlaced = 0;
+            while (minesPlaced < MINES_COUNT) {
+                let r = Math.floor(Math.random() * ROWS);
+                let c = Math.floor(Math.random() * COLS);
+                if (!board[r][c].mine) { // Ha még nincs ott akna
+                    board[r][c].mine = true;
+                    minesPlaced++;
+                }
+            }
+
+            // HTML elemek (dobozok) megrajzolása a képernyőn
+            for (let r = 0; r < ROWS; r++) {
+                for (let c = 0; c < COLS; c++) {
+                    const cell = document.createElement('div');
+                    cell.classList.add('cell');
+                    
+                    // Bal klikk (Felfedés)
+                    cell.addEventListener('click', () => revealCell(r, c));
+                    
+                    // Jobb klikk (Zászló lerakása, és az alap böngésző menü letiltása)
+                    cell.addEventListener('contextmenu', (e) => {
+                        e.preventDefault();
+                        toggleFlag(r, c);
+                    });
+
+                    board[r][c].element = cell;
+                    boardElement.appendChild(cell);
+                }
+            }
+        }
+
+        // Cella felfedése
+        function revealCell(r, c) {
+            // Ha vége a játéknak, vagy már fel van fedve, vagy zászlós, nem csinálunk semmit
+            if (gameOver || board[r][c].revealed || board[r][c].flagged) return;
+
+            const cellObj = board[r][c];
+            cellObj.revealed = true;
+            cellObj.element.classList.add('revealed');
+            revealedCount++;
+
+            // Ha aknára léptünk
+            if (cellObj.mine) {
+                cellObj.element.classList.add('mine');
+                cellObj.element.innerText = '💣';
+                endGame(false);
+                return;
+            }
+
+            // Megszámoljuk a környező aknákat
+            const minesAround = countMines(r, c);
+            if (minesAround > 0) {
+                cellObj.element.innerText = minesAround;
+                // Különböző számokhoz különböző színek
+                const colors = ['', 'blue', 'green', 'red', 'purple', 'maroon', 'turquoise', 'black', 'gray'];
+                cellObj.element.style.color = colors[minesAround];
+            } else {
+                // Ha 0 akna van körülötte, automatikusan felfedjük a szomszédait (rekurzió)
+                for (let i = -1; i <= 1; i++) {
+                    for (let j = -1; j <= 1; j++) {
+                        if (r + i >= 0 && r + i < ROWS && c + j >= 0 && c + j < COLS) {
+                            revealCell(r + i, c + j);
+                        }
+                    }
+                }
+            }
+
+            checkWin(); // Ellenőrizzük, hogy nyert-e a játékos
+        }
+
+        // Zászló (flag) ki/be kapcsolása jobb klikkre
+        function toggleFlag(r, c) {
+            if (gameOver || board[r][c].revealed) return;
+            
+            const cellObj = board[r][c];
+            cellObj.flagged = !cellObj.flagged;
+            
+            if (cellObj.flagged) {
+                cellObj.element.innerText = '🚩';
+            } else {
+                cellObj.element.innerText = '';
+            }
+        }
+
+        // Szomszédos aknák megszámolása
+        function countMines(r, c) {
+            let count = 0;
+            for (let i = -1; i <= 1; i++) {
+                for (let j = -1; j <= 1; j++) {
+                    if (r + i >= 0 && r + i < ROWS && c + j >= 0 && c + j < COLS) {
+                        if (board[r+i][c+j].mine) count++;
+                    }
+                }
+            }
+            return count;
+        }
+
+        // Játék vége logika
+        function endGame(win) {
+            gameOver = true;
+            if (win) {
+                messageElement.innerText = '🎉 Nyertél! Gratulálok!';
+                messageElement.style.color = '#2ecc71';
+            } else {
+                messageElement.innerText = '💥 Bumm! Vesztettél!';
+                messageElement.style.color = '#e74c3c';
+                // Ha vesztettünk, felfedjük az összes aknát
+                for (let r = 0; r < ROWS; r++) {
+                    for (let c = 0; c < COLS; c++) {
+                        if (board[r][c].mine) {
+                            board[r][c].element.classList.add('mine');
+                            board[r][c].element.innerText = '💣';
+                        }
+                    }
+                }
+            }
+        }
+
+        // Győzelem ellenőrzése
+        function checkWin() {
+            // Ha a felfedett cellák száma megegyezik a nem aknás cellák számával
+            if (revealedCount === (ROWS * COLS) - MINES_COUNT) {
+                endGame(true);
+            }
+        }
+
+        // Amikor a böngésző betölti az oldalt, elindítunk egy játékot
+        initGame();
+    </script>
+</body>
+</html>
