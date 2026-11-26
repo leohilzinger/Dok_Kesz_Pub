@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<timetable importtype="database" options="export:idprefix" displayname="aSc TimeTables XML" displaycountries="">
+  <periods options="canadd,export:idprefix" columns="period,name,short,starttime,endtime">
+    <period name="1. óra" short="1" period="1" starttime="08:00" endtime="08:45"/>
+    <period name="2. óra" short="2" period="2" starttime="08:55" endtime="09:40"/>
+    <period name="3. óra" short="3" period="3" starttime="09:55" endtime="10:40"/>
+    <period name="4. óra" short="4" period="4" starttime="10:50" endtime="11:35"/>
+    <period name="5. óra" short="5" period="5" starttime="11:45" endtime="12:30"/>
+    <period name="6. óra" short="6" period="6" starttime="12:45" endtime="13:30"/>
+    <period name="7. óra" short="7" period="7" starttime="13:40" endtime="14:25"/>
+  </periods>
+
+  <daysdefs options="canadd,export:idprefix" columns="id,name,short,vals">
+    <daysdef id="D1" name="Hétfő" short="H" vals="10000"/>
+    <daysdef id="D2" name="Kedd" short="K" vals="01000"/>
+    <daysdef id="D3" name="Szerda" short="Sze" vals="00100"/>
+    <daysdef id="D4" name="Csütörtök" short="Cs" vals="00010"/>
+    <daysdef id="D5" name="Péntek" short="P" vals="00001"/>
+    <daysdef id="D_ALL" name="Minden nap" short="Minden" vals="11111"/>
+  </daysdefs>
+
+  <weeksdefs options="canadd,export:idprefix" columns="id,name,short,vals">
+    <weeksdef id="W_ALL" name="Minden hét" short="Minden" vals="1"/>
+  </weeksdefs>
+
+  <termsdefs options="canadd,export:idprefix" columns="id,name,short,vals">
+    <termsdef id="T_ALL" name="Egész év" short="Év" vals="1"/>
+  </termsdefs>
+
+  <subjects options="canadd,export:idprefix" columns="id,name,short">
+    <subject id="SUB_MIR" name="Magyar nyelv és irodalom" short="Magyar"/>
+    <subject id="SUB_MAT" name="Matematika" short="Mat"/>
+    <subject id="SUB_TOR" name="Történelem" short="Töri"/>
+    <subject id="SUB_ANG" name="Angol nyelv" short="Angol"/>
+    <subject id="SUB_TER" name="Természettudomány" short="Term"/>
+    <subject id="SUB_BIO" name="Biológia" short="Bio"/>
+    <subject id="SUB_FIZ" name="Fizika" short="Fiz"/>
+    <subject id="SUB_KEM" name="Kémia" short="Kém"/>
+    <subject id="SUB_FOL" name="Földrajz" short="Földr"/>
+    <subject id="SUB_DIG" name="Digitális kultúra" short="DigKult"/>
+    <subject id="SUB_TES" name="Testnevelés" short="Tesi"/>
+    <subject id="SUB_ENE" name="Ének-zene" short="Ének"/>
+    <subject id="SUB_RAJ" name="Vizuális kultúra" short="Rajz"/>
+    <subject id="SUB_TEC" name="Technika és tervezés" short="Tech"/>
+    <subject id="SUB_ETI" name="Etika / Hit- és erkölcstan" short="Etika"/>
+    <subject id="SUB_HON" name="Hon- és népismeret" short="Honism"/>
+    <subject id="SUB_OSZ" name="Osztályfőnöki" short="Ofő"/>
+  </subjects>
+
+  <classrooms options="canadd,export:idprefix" columns="id,name,short">
+    <classroom id="CR_101" name="101-es tanterem (5.A)" short="101"/>
+    <classroom id="CR_102" name="102-es tanterem (5.B)" short="102"/>
+    <classroom id="CR_103" name="103-as tanterem (6.A)" short="103"/>
+    <classroom id="CR_104" name="104-es tanterem (6.B)" short="104"/>
+    <classroom id="CR_201" name="201-es tanterem (7.A)" short="201"/>
+    <classroom id="CR_202" name="202-es tanterem (7.B)" short="202"/>
+    <classroom id="CR_203" name="203-as tanterem (8.A)" short="203"/>
+    <classroom id="CR_204" name="204-es tanterem (8.B)" short="204"/>
+    <classroom id="CR_INF" name="Informatika szaktanterem" short="Infó"/>
+    <classroom id="CR_LAB" name="Természettudományi labor" short="Labor"/>
+    <classroom id="CR_TOR1" name="Nagytornaterem" short="Torna1"/>
+    <classroom id="CR_TOR2" name="Kistornaterem / Udvar" short="Torna2"/>
+    <classroom id="CR_MUV" name="Művészeti és technika terem" short="Műv"/>
+  </classrooms>
+
+  <classes options="canadd,export:idprefix" columns="id,name,short,classroomids,teacherid">
+    <class id="CL_5A" name="5.A osztály" short="5.A" classroomids="CR_101" teacherid="T_01"/>
+    <class id="CL_5B" name="5.B osztály" short="5.B" classroomids="CR_102" teacherid="T_02"/>
+    <class id="CL_6A" name="6.A osztály" short="6.A" classroomids="CR_103" teacherid="T_03"/>
+    <class id="CL_6B" name="6.B osztály" short="6.B" classroomids="CR_104" teacherid="T_04"/>
+    <class id="CL_7A" name="7.A osztály" short="7.A" classroomids="CR_201" teacherid="T_05"/>
+    <class id="CL_7B" name="7.B osztály" short="7.B" classroomids="CR_202" teacherid="T_06"/>
+    <class id="CL_8A" name="8.A osztály" short="8.A" classroomids="CR_203" teacherid="T_07"/>
+    <class id="CL_8B" name="8.B osztály" short="8.B" classroomids="CR_204" teacherid="T_08"/>
+  </classes>
+
+  <teachers options="canadd,export:idprefix" columns="id,name,short,gender">
+    <teacher id="T_01" name="Nagy Eszter" short="Nagy E." gender="F"/>
+    <teacher id="T_02" name="Kovács Péter" short="Kovács P." gender="M"/>
+    <teacher id="T_03" name="Tóth Anna" short="Tóth A." gender="F"/>
+    <teacher id="T_04" name="Szabó Gábor" short="Szabó G." gender="M"/>
+    <teacher id="T_05" name="Horváth Katalin" short="Horváth K." gender="F"/>
+    <teacher id="T_06" name="Varga László" short="Varga L." gender="M"/>
+    <teacher id="T_07" name="Kiss Zsófia" short="Kiss Zs." gender="F"/>
+    <teacher id="T_08" name="Molnár Tamás" short="Molnár T." gender="M"/>
+    <teacher id="T_09" name="Németh Júlia" short="Németh J." gender="F"/>
+    <teacher id="T_10" name="Farkas Balázs" short="Farkas B." gender="M"/>
+    <teacher id="T_11" name="Balogh Dóra" short="Balogh D." gender="F"/>
+    <teacher id="T_12" name="Papp Krisztián" short="Papp K." gender="M"/>
+    <teacher id="T_13" name="Takács Réka" short="Takács R." gender="F"/>
+    <teacher id="T_14" name="Juhász Bence" short="Juhász B." gender="M"/>
+    <teacher id="T_15" name="Lakatos Viktória" short="Lakatos V." gender="F"/>
+    <teacher id="T_16" name="Mészáros Ádám" short="Mészáros Á." gender="M"/>
+    <teacher id="T_17" name="Simon Boglárka" short="Simon B." gender="F"/>
+    <teacher id="T_18" name="Rácz Dániel" short="Rácz D." gender="M"/>
+  </teachers>
+
+  <lessons options="canadd,export:idprefix" columns="id,classids,subjectid,teacherids,classroomids,periodspercard,periodsperweek">
+    <lesson id="L_5A_1" classids="CL_5A" subjectid="SUB_MIR" teacherids="T_01" classroomids="CR_101" periodspercard="1" periodsperweek="5"/>
+    <lesson id="L_5A_2" classids="CL_5A" subjectid="SUB_MAT" teacherids="T_02" classroomids="CR_101" periodspercard="1" periodsperweek="4"/>
+    <lesson id="L_5A_3" classids="CL_5A" subjectid="SUB_TOR" teacherids="T_03" classroomids="CR_101" periodspercard="1" periodsperweek="2"/>
+    <lesson id="L_5A_4" classids="CL_5A" subjectid="SUB_ANG" teacherids="T_09" classroomids="CR_101" periodspercard="1" periodsperweek="3"/>
+    <lesson id="L_5A_5" classids="CL_5A" subjectid="SUB_TER" teacherids="T_05" classroomids="CR_101" periodspercard="1" periodsperweek="2"/>
+    <lesson id="L_5A_6" classids="CL_5A" subjectid="SUB_DIG" teacherids="T_08" classroomids="CR_INF" periodspercard="1" periodsperweek="1"/>
+    <lesson id="L_5A_7" classids="CL_5A" subjectid="SUB_TES" teacherids="T_12" classroomids="CR_TOR1" periodspercard="1" periodsperweek="5"/>
+    <lesson id="L_5A_8" classids="CL_5A" subjectid="SUB_ENE" teacherids="T_15" classroomids="CR_MUV" periodspercard="1" periodsperweek="1"/>
+    <lesson id="L_5A_9" classids="CL_5A" subjectid="SUB_RAJ" teacherids="T_16" classroomids="CR_MUV" periodspercard="1" periodsperweek="1"/>
+    <lesson id="L_5A_10" classids="CL_5A" subjectid="SUB_TEC" teacherids="T_17" classroomids="CR_MUV" periodspercard="1" periodsperweek="1"/>
+    <lesson id="L_5A_11" classids="CL_5A" subjectid="SUB_ETI" teacherids="T_18" classroomids="CR_101" periodspercard="1" periodsperweek="1"/>
+    <lesson id="L_5A_12" classids="CL_5A" subjectid="SUB_HON" teacherids="T_03" classroomids="CR_101" periodspercard="1" periodsperweek="1"/>
+    <lesson id="L_5A_13" classids="CL_5A" subjectid="SUB_OSZ" teacherids="T_01" classroomids="CR_101" periodspercard="1" periodsperweek="1"/>
+
+    <lesson id="L_5B_1" classids="CL_5B" subjectid="SUB_MIR" teacherids="T_01" classroomids="CR_102" periodspercard="1" periodsperweek="5"/>
+    <lesson id="L_5B_2" classids="CL_5B" subjectid="SUB_MAT" teacherids="T_02" classroomids="CR_102" periodspercard="1" periodsperweek="4"/>
+    <lesson id="L_5B_3" classids="CL_5B" subjectid="SUB_TOR" teacherids="T_03" classroomids="CR_102" periodspercard="1" periodsperweek="2"/>
+    <lesson id="L_5B_4" classids="CL_5B" subjectid="SUB_ANG" teacherids="T_09" classroomids="CR_102" periodspercard="1" periodsperweek="3"/>
+    <lesson id="L_5B_5" classids="CL_5B" subjectid="SUB_TER" teacherids="T_05" classroomids="CR_102" periodspercard="1" periodsperweek="2"/>
+    <lesson id="L_5B_6" classids="CL_5B" subjectid="SUB_DIG" teacherids="T_08" classroomids="CR_INF" periodspercard="1" periodsperweek="1"/>
+    <lesson id="L_5B_7" classids="CL_5B" subjectid="SUB_TES" teacherids="T_13" classroomids="CR_TOR2" periodspercard="1" periodsperweek="5"/>
+    <lesson id="L_5B_8" classids="CL_5B" subjectid="SUB_ENE" teacherids="T_15" classroomids="CR_MUV" periodspercard="1" periodsperweek="1"/>
+    <lesson id="L_5B_9" classids="CL_5B" subjectid="SUB_RAJ" teacherids="T_16" classroomids="CR_MUV" periodspercard="1" periodsperweek="1"/>
+    <lesson id="L_5B_10" classids="CL_5B" subjectid="SUB_TEC" teacherids="T_17" classroomids="CR_MUV" periodspercard="1" periodsperweek="1"/>
+    <lesson id="L_5B_11" classids="CL_5B" subjectid="SUB_ETI" teacherids="T_18" classroomids="CR_102" periodspercard="1" periodsperweek="1"/>
+    <lesson id="L_5B_12" classids="CL_5B" subjectid="SUB_HON" teacherids="T_03" classroomids="CR_102" periodspercard="1" periodsperweek="1"/>
+    <lesson id="L_5B_13" classids="CL_5B" subjectid="SUB_OSZ" teacherids="T_02" classroomids="CR_102" periodspercard="1" periodsperweek="1"/>
+
+    <lesson id="L_6A_1" classids="CL_6A" subjectid="SUB_MIR" teacherids="T_03" classroomids="CR_103" periodspercard="1" periodsperweek="4"/>
+    <lesson id="L_6A_2" classids="CL_6A" subjectid="SUB_MAT" teacherids="T_04" classroomids="CR_103" periodspercard="1" periodsperweek="4"/>
+    <lesson id="L_6A_3" classids="CL_6A" subjectid="SUB_TOR" teacherids="T_03" classroomids="CR_103" periodspercard="1" periodsperweek="2"/>
+    <lesson id="L_6A_4" classids="CL_6A" subjectid="SUB_ANG" teacherids="T_10" classroomids="CR_103" periodspercard="1" periodsperweek="3"/>
+    <lesson id="L_6A_5" classids="CL_6A" subjectid="SUB_TER" teacherids="T_05" classroomids="CR_103" periodspercard="1" periodsperweek="3"/>
+    <lesson id="L_6A_6" classids="CL_6A" subjectid="SUB_DIG" teacherids="T_08" classroomids="CR_INF" periodspercard="1" periodsperweek="1"/>
+    <lesson id="L_6A_7" classids="CL_6A" subjectid="SUB_TES" teacherids="T_12" classroomids="CR_TOR1" periodspercard="1" periodsperweek="5"/>
+    <lesson id="L_6A_8" classids="CL_6A" subjectid="SUB_ENE" teacherids="T_15" classroomids="CR_MUV" periodspercard="1" periodsperweek="1"/>
+    <lesson id="L_6A_9" classids="CL_6A" subjectid="SUB_RAJ" teacherids="T_16" classroomids="CR_MUV" periodspercard="1" periodsperweek="1"/>
+    <lesson id="L_6A_10" classids="CL_6A" subjectid="SUB_TEC" teacherids="T_17" classroomids="CR_MUV" periodspercard="1" periodsperweek="1"/>
+    <lesson id="L_6A_11" classids="CL_6A" subjectid="SUB_ETI" teacherids="T_18" classroomids="CR_103" periodspercard="1" periodsperweek="1"/>
+    <lesson id="L_6A_12" classids="CL_6A" subjectid="SUB_OSZ" teacherids="T_03" classroomids="CR_103" periodspercard="1" periodsperweek="1"/>
+
+    <lesson id="L_6B_1" classids="CL_6B" subjectid="SUB_MIR" teacherids="T_07" classroomids="CR_104" periodspercard="1" periodsperweek="4"/>
+    <lesson id="L_6B_2" classids="CL_6B" subjectid="SUB_MAT" teacherids="T_04" classroomids="CR_104" periodspercard="1" periodsperweek="4"/>
+    <lesson id="L_6B_3" classids="CL_6B" subjectid="SUB_TOR" teacherids="T_07" classroomids="CR_104" periodspercard="1" periodsperweek="2"/>
+    <lesson id="L_6B_4" classids="CL_6B" subjectid="SUB_ANG" teacherids="T_10" classroomids="CR_104" periodspercard="1" periodsperweek="3"/>
+    <lesson id="L_6B_5" classids="CL_6B" subjectid="SUB_TER" teacherids="T_05" classroomids="CR_104" periodspercard="1" periodsperweek="3"/>
+    <lesson id="L_6B_6" classids="CL_6B" subjectid="SUB_DIG" teacherids="T_08" classroomids="CR_INF" periodspercard="1" periodsperweek="1"/>
+    <lesson id="L_6B_7" classids="CL_6B" subjectid="SUB_TES" teacherids="T_13" classroomids="CR_TOR2" periodspercard="1" periodsperweek="5"/>
+    <lesson id="L_6B_8" classids="CL_6B" subjectid="SUB_ENE" teacherids="T_15" classroomids="CR_MUV" periodspercard="1" periodsperweek="1"/>
+    <lesson id="L_6B_9" classids="CL_6B" subjectid="SUB_RAJ" teacherids="T_16" classroomids="CR_MUV" periodspercard="1" periodsperweek="1"/>
+    <lesson id="L_6B_10" classids="CL_6B" subjectid="SUB_TEC" teacherids="T_17" classroomids="CR_MUV" periodspercard="1" periodsperweek="1"/>
+    <lesson id="L_6B_11" classids="CL_6B" subjectid="SUB_ETI" teacherids="T_18" classroomids="CR_104" periodspercard="1" periodsperweek="1"/>
+    <lesson id="L_6B_12" classids="CL_6B" subjectid="SUB_OSZ" teacherids="T_04" classroomids="CR_104" periodspercard="1" periodsperweek="1"/>
+
+    <lesson id="L_7A_1" classids="CL_7A" subjectid="SUB_MIR" teacherids="T_01" classroomids="CR_201" periodspercard="1" periodsperweek="4"/>
+    <lesson id="L_7A_2" classids="CL_7A" subjectid="SUB_MAT" teacherids="T_06" classroomids="CR_201" periodspercard="1" periodsperweek="4"/>
+    <lesson id="L_7A_3" classids="CL_7A" subjectid="SUB_TOR" teacherids="T_07" classroomids="CR_201" periodspercard="1" periodsperweek="2"/>
+    <lesson id="L_7A_4" classids="CL_7A" subjectid="SUB_ANG" teacherids="T_09" classroomids="CR_201" periodspercard="1" periodsperweek="3"/>
+    <lesson id="L_7A_5" classids="CL_7A" subjectid="SUB_BIO" teacherids="T_05" classroomids="CR_LAB" periodspercard="1" periodsperweek="2"/>
+    <lesson id="L_7A_6" classids="CL_7A" subjectid="SUB_FIZ" teacherids="T_06" classroomids="CR_LAB" periodspercard="1" periodsperweek="1"/>
+    <lesson id="L_7A_7" classids="CL_7A" subjectid="SUB_KEM" teacherids="T_11" classroomids="CR_LAB" periodspercard="1" periodsperweek="2"/>
+    <lesson id="L_7A_8" classids="CL_7A" subjectid="SUB_FOL" teacherids="T_11" classroomids="CR_201" periodspercard="1" periodsperweek="1"/>
+    <lesson id="L_7A_9" classids="CL_7A" subjectid="SUB_DIG" teacherids="T_08" classroomids="CR_INF" periodspercard="1" periodsperweek="1"/>
+    <lesson id="L_7A_10" classids="CL_7A" subjectid="SUB_TES" teacherids="T_14" classroomids="CR_TOR1" periodspercard="1" periodsperweek="5"/>
+    <lesson id="L_7A_11" classids="CL_7A" subjectid="SUB_ENE" teacherids="T_15" classroomids="CR_MUV" periodspercard="1" periodsperweek="1"/>
+    <lesson id="L_7A_12" classids="CL_7A" subjectid="SUB_RAJ" teacherids="T_16" classroomids="CR_MUV" periodspercard="1" periodsperweek="1"/>
+    <lesson id="L_7A_13" classids="CL_7A" subjectid="SUB_TEC" teacherids="T_17" classroomids="CR_MUV" periodspercard="1" periodsperweek="1"/>
+    <lesson id="L_7A_14" classids="CL_7A" subjectid="SUB_ETI" teacherids="T_18" classroomids="CR_201" periodspercard="1" periodsperweek="1"/>
+    <lesson id="L_7A_15" classids="CL_7A" subjectid="SUB_OSZ" teacherids="T_05" classroomids="CR_201" periodspercard="1" periodsperweek="1"/>
+
+    <lesson id="L_7B_1" classids="CL_7B" subjectid="SUB_MIR" teacherids="T_07" classroomids="CR_202" periodspercard="1" periodsperweek="4"/>
+    <lesson id="L_7B_2" classids="CL_7B" subjectid="SUB_MAT" teacherids="T_06" classroomids="CR_202" periodspercard="1" periodsperweek="4"/>
+    <lesson id="L_7B_3" classids="CL_7B" subjectid="SUB_TOR" teacherids="T_07" classroomids="CR_202" periodspercard="1" periodsperweek="2"/>
+    <lesson id="L_7B_4" classids="CL_7B" subjectid="SUB_ANG" teacherids="T_10" classroomids="CR_202" periodspercard="1" periodsperweek="3"/>
+    <lesson id="L_7B_5" classids="CL_7B" subjectid="SUB_BIO" teacherids="T_05" classroomids="CR_LAB" periodspercard="1" periodsperweek="2"/>
+    <lesson id="L_7B_6" classids="CL_7B" subjectid="SUB_FIZ" teacherids="T_06" classroomids="CR_LAB" periodspercard="1" periodsperweek="1"/>
+    <lesson id="L_7B_7" classids="CL_7B" subjectid="SUB_KEM" teacherids="T_11" classroomids="CR_LAB" periodspercard="1" periodsperweek="2"/>
+    <lesson id="L_7B_8" classids="CL_7B" subjectid="SUB_FOL" teacherids="T_11" classroomids="CR_202" periodspercard="1" periodsperweek="1"/>
+    <lesson id="L_7B_9" classids="CL_7B" subjectid="SUB_DIG" teacherids="T_08" classroomids="CR_INF" periodspercard="1" periodsperweek="1"/>
+    <lesson id="L_7B_10" classids="CL_7B" subjectid="SUB_TES" teacherids="T_14" classroomids="CR_TOR2" periodspercard="1" periodsperweek="5"/>
+    <lesson id="L_7B_11" classids="CL_7B" subjectid="SUB_ENE" teacherids="T_15" classroomids="CR_MUV" periodspercard="1" periodsperweek="1"/>
+    <lesson id="L_7B_12" classids="CL_7B" subjectid="SUB_RAJ" teacherids="T_16" classroomids="CR_MUV" periodspercard="1" periodsperweek="1"/>
+    <lesson id="L_7B_13" classids="CL_7B" subjectid="SUB_TEC" teacherids="T_17" classroomids="CR_MUV" periodspercard="1" periodsperweek="1"/>
+    <lesson id="L_7B_14" classids="CL_7B" subjectid="SUB_ETI" teacherids="T_18" classroomids="CR_202" periodspercard="1" periodsperweek="1"/>
+    <lesson id="L_7B_15" classids="CL_7B" subjectid="SUB_OSZ" teacherids="T_06" classroomids="CR_202" periodspercard="1" periodsperweek="1"/>
+
+    <lesson id="L_8A_1" classids="CL_8A" subjectid="SUB_MIR" teacherids="T_01" classroomids="CR_203" periodspercard="1" periodsperweek="4"/>
+    <lesson id="L_8A_2" classids="CL_8A" subjectid="SUB_MAT" teacherids="T_02" classroomids="CR_203" periodspercard="1" periodsperweek="4"/>
+    <lesson id="L_8A_3" classids="CL_8A" subjectid="SUB_TOR" teacherids="T_03" classroomids="CR_203" periodspercard="1" periodsperweek="2"/>
+    <lesson id="L_8A_4" classids="CL_8A" subjectid="SUB_ANG" teacherids="T_09" classroomids="CR_203" periodspercard="1" periodsperweek="3"/>
+    <lesson id="L_8A_5" classids="CL_8A" subjectid="SUB_BIO" teacherids="T_05" classroomids="CR_LAB" periodspercard="1" periodsperweek="2"/>
+    <lesson id="L_8A_6" classids="CL_8A" subjectid="SUB_FIZ" teacherids="T_06" classroomids="CR_LAB" periodspercard="1" periodsperweek="2"/>
+    <lesson id="L_8A_7" classids="CL_8A" subjectid="SUB_KEM" teacherids="T_11" classroomids="CR_LAB" periodspercard="1" periodsperweek="1"/>
+    <lesson id="L_8A_8" classids="CL_8A" subjectid="SUB_FOL" teacherids="T_11" classroomids="CR_203" periodspercard="1" periodsperweek="2"/>
+    <lesson id="L_8A_9" classids="CL_8A" subjectid="SUB_DIG" teacherids="T_08" classroomids="CR_INF" periodspercard="1" periodsperweek="1"/>
+    <lesson id="L_8A_10" classids="CL_8A" subjectid="SUB_TES" teacherids="T_12" classroomids="CR_TOR1" periodspercard="1" periodsperweek="5"/>
+    <lesson id="L_8A_11" classids="CL_8A" subjectid="SUB_ENE" teacherids="T_15" classroomids="CR_MUV" periodspercard="1" periodsperweek="1"/>
+    <lesson id="L_8A_12" classids="CL_8A" subjectid="SUB_RAJ" teacherids="T_16" classroomids="CR_MUV" periodspercard="1" periodsperweek="1"/>
+    <lesson id="L_8A_13" classids="CL_8A" subjectid="SUB_ETI" teacherids="T_18" classroomids="CR_203" periodspercard="1" periodsperweek="1"/>
+    <lesson id="L_8A_14" classids="CL_8A" subjectid="SUB_OSZ" teacherids="T_07" classroomids="CR_203" periodspercard="1" periodsperweek="1"/>
+
+    <lesson id="L_8B_1" classids="CL_8B" subjectid="SUB_MIR" teacherids="T_07" classroomids="CR_204" periodspercard="1" periodsperweek="4"/>
+    <lesson id="L_8B_2" classids="CL_8B" subjectid="SUB_MAT" teacherids="T_04" classroomids="CR_204" periodspercard="1" periodsperweek="4"/>
+    <lesson id="L_8B_3" classids="CL_8B" subjectid="SUB_TOR" teacherids="T_07" classroomids="CR_204" periodspercard="1" periodsperweek="2"/>
+    <lesson id="L_8B_4" classids="CL_8B" subjectid="SUB_ANG" teacherids="T_10" classroomids="CR_204" periodspercard="1" periodsperweek="3"/>
+    <lesson id="L_8B_5" classids="CL_8B" subjectid="SUB_BIO" teacherids="T_05" classroomids="CR_LAB" periodspercard="1" periodsperweek="2"/>
+    <lesson id="L_8B_6" classids="CL_8B" subjectid="SUB_FIZ" teacherids="T_06" classroomids="CR_LAB" periodspercard="1" periodsperweek="2"/>
+    <lesson id="L_8B_7" classids="CL_8B" subjectid="SUB_KEM" teacherids="T_11" classroomids="CR_LAB" periodspercard="1" periodsperweek="1"/>
+    <lesson id="L_8B_8" classids="CL_8B" subjectid="SUB_FOL" teacherids="T_11" classroomids="CR_204" periodspercard="1" periodsperweek="2"/>
+    <lesson id="L_8B_9" classids="CL_8B" subjectid="SUB_DIG" teacherids="T_08" classroomids="CR_INF" periodspercard="1" periodsperweek="1"/>
+    <lesson id="L_8B_10" classids="CL_8B" subjectid="SUB_TES" teacherids="T_13" classroomids="CR_TOR2" periodspercard="1" periodsperweek="5"/>
+    <lesson id="L_8B_11" classids="CL_8B" subjectid="SUB_ENE" teacherids="T_15" classroomids="CR_MUV" periodspercard="1" periodsperweek="1"/>
+    <lesson id="L_8B_12" classids="CL_8B" subjectid="SUB_RAJ" teacherids="T_16" classroomids="CR_MUV" periodspercard="1" periodsperweek="1"/>
+    <lesson id="L_8B_13" classids="CL_8B" subjectid="SUB_ETI" teacherids="T_18" classroomids="CR_204" periodspercard="1" periodsperweek="1"/>
+    <lesson id="L_8B_14" classids="CL_8B" subjectid="SUB_OSZ" teacherids="T_08" classroomids="CR_204" periodspercard="1" periodsperweek="1"/>
+  </lessons>
+</timetable>
